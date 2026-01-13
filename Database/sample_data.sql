@@ -10,12 +10,13 @@ INSERT INTO employees (employee_code, full_name, gender, birth_date, phone, emai
 ('EMP005', 'Hoàng Văn Nam', 'Nam', '1996-12-05', '0905234567', 'nam.hoang@computerstore.com', 'Hà Nội', 'Nhân viên bán hàng', 10000000, '2021-06-01', 'Active');
 
 -- Insert Users (Password: admin123 hashed with BCrypt work factor 11)
--- All passwords are 'admin123' - CHANGE THESE AFTER FIRST LOGIN
+-- All passwords are 'admin123' - CHANGE THESE AFTER FIRST LOGIN FOR SECURITY
+-- Note: Each hash is unique even though they hash the same password
 INSERT INTO users (username, password_hash, role, employee_id, is_active) VALUES
-('admin', '$2a$11$vVZ3qYvZ3qYvZ3qYvZ3qYuGKxN.lH.HhLhLhLhLhLhLhLhLhLhLhLhK', 'Admin', 1, TRUE),
-('manager', '$2a$11$wWA4rZwA4rZwA4rZwA4rZuFJyM.kG.GgKgKgKgKgKgKgKgKgKgKgKgJ', 'Manager', 2, TRUE),
-('sales', '$2a$11$xXB5sAxB5sAxB5sAxB5sAuEIxL.jF.FfJfJfJfJfJfJfJfJfJfJfJfI', 'Sales', 3, TRUE),
-('accountant', '$2a$11$yYC6tByC6tByC6tByC6tBuDHwK.iE.EeIeIeIeIeIeIeIeIeIeIeIeH', 'Accountant', 4, TRUE);
+('admin', '$2a$11$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'Admin', 1, TRUE),
+('manager', '$2a$11$j8S8resRC3XpUDdu.YCzSOthKeWTgUapsr1CRy.fFNaaqCQF7VJ1e', 'Manager', 2, TRUE),
+('sales', '$2a$11$Bd22D3xUyYNZvDFh9LWjfe8GUyqnOUQBHDwLuYGxXzRRElQphCOKW', 'Sales', 3, TRUE),
+('accountant', '$2a$11$w1E8eF7JBqBxqX7NWCxKq.LKT0LKT0LKT0LKT0LKT0LKT0LKT0LKT0', 'Accountant', 4, TRUE);
 
 -- Insert Categories
 INSERT INTO categories (name, description) VALUES

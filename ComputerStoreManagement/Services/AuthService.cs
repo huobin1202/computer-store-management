@@ -3,24 +3,28 @@ using ComputerStoreManagement.Data;
 using ComputerStoreManagement.Helpers;
 using ComputerStoreManagement.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ComputerStoreManagement.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly AppDbContext _context;
+        private readonly IServiceProvider _serviceProvider;
         private User? _currentUser;
 
-        public AuthService(AppDbContext context)
+        public AuthService(IServiceProvider serviceProvider)
         {
-            _context = context;
+            _serviceProvider = serviceProvider;
         }
 
         public User? CurrentUser => _currentUser;
 
         public async Task<User?> LoginAsync(string username, string password)
         {
-            var user = await _context.Users
+            using var scope = _serviceProvider.CreateScope();
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            
+            var user = await context.Users
                 .Include(u => u.Employee)
                 .FirstOrDefaultAsync(u => u.Username == username && u.IsActive);
 
@@ -36,22 +40,28 @@ namespace ComputerStoreManagement.Services
 
         public async Task<bool> RegisterAsync(User user, string password)
         {
-            var existingUser = await _context.Users
+            using var scope = _serviceProvider.CreateScope();
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            
+            var existingUser = await context.Users
                 .FirstOrDefaultAsync(u => u.Username == user.Username);
 
             if (existingUser != null)
                 return false;
 
             user.PasswordHash = PasswordHelper.HashPassword(password);
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
 
             return true;
         }
 
         public async Task<bool> ChangePasswordAsync(int userId, string oldPassword, string newPassword)
         {
-            var user = await _context.Users.FindAsync(userId);
+            using var scope = _serviceProvider.CreateScope();
+            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            
+            var user = await context.Users.FindAsync(userId);
             if (user == null)
                 return false;
 
@@ -59,7 +69,7 @@ namespace ComputerStoreManagement.Services
                 return false;
 
             user.PasswordHash = PasswordHelper.HashPassword(newPassword);
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             return true;
         }
