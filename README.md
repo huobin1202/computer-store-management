@@ -54,12 +54,12 @@ Mở file `ComputerStoreManagement/appsettings.json` và cập nhật connection
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=computer_store_db;User=root;Password=your_password;CharSet=utf8mb4;"
+    "DefaultConnection": "Server=localhost;Database=computer_store_db;User=root;Password=YOUR_MYSQL_PASSWORD_HERE;CharSet=utf8mb4;"
   }
 }
 ```
 
-**Lưu ý**: Thay `your_password` bằng mật khẩu MySQL của bạn.
+**Lưu ý**: Thay `YOUR_MYSQL_PASSWORD_HERE` bằng mật khẩu MySQL của bạn. Không để password trống vì lý do bảo mật.
 
 ### Bước 5: Restore NuGet Packages
 

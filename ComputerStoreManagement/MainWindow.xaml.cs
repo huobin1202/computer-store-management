@@ -91,8 +91,8 @@ public partial class MainWindow : Window
             _authService.Logout();
             
             // Show login window
-            var loginWindow = App.ServiceProvider.GetService(typeof(LoginView)) as LoginView;
-            loginWindow?.Show();
+            var loginWindow = (LoginView)App.ServiceProvider.GetService(typeof(LoginView))!;
+            loginWindow.Show();
             
             // Close main window
             this.Close();
