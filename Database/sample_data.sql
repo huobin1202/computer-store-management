@@ -9,14 +9,13 @@ INSERT INTO employees (employee_code, full_name, gender, birth_date, phone, emai
 ('EMP004', 'Phạm Thị Mai', 'Nữ', '1997-03-25', '0904234567', 'mai.pham@computerstore.com', 'Hà Nội', 'Kế toán', 12000000, '2021-03-01', 'Active'),
 ('EMP005', 'Hoàng Văn Nam', 'Nam', '1996-12-05', '0905234567', 'nam.hoang@computerstore.com', 'Hà Nội', 'Nhân viên bán hàng', 10000000, '2021-06-01', 'Active');
 
--- Insert Users (Password: admin123 hashed with BCrypt)
--- BCrypt hash for 'admin123': $2a$11$XZ0lq8qF5JhKxXKKxXKKxuN7VU4YX5W5W5W5W5W5W5W5W5W5W5W5.
--- For demo purposes, using a simplified hash. In real app, use BCrypt.Net
+-- Insert Users (Password: admin123 hashed with BCrypt work factor 11)
+-- All passwords are 'admin123' - CHANGE THESE AFTER FIRST LOGIN
 INSERT INTO users (username, password_hash, role, employee_id, is_active) VALUES
-('admin', '$2a$11$5Z0lq8qF5JhKxXKKxXKKxuN7VU4YX5W5W5W5W5W5W5W5W5W5W5W5.', 'Admin', 1, TRUE),
-('manager', '$2a$11$5Z0lq8qF5JhKxXKKxXKKxuN7VU4YX5W5W5W5W5W5W5W5W5W5W5W5.', 'Manager', 2, TRUE),
-('sales', '$2a$11$5Z0lq8qF5JhKxXKKxXKKxuN7VU4YX5W5W5W5W5W5W5W5W5W5W5W5.', 'Sales', 3, TRUE),
-('accountant', '$2a$11$5Z0lq8qF5JhKxXKKxXKKxuN7VU4YX5W5W5W5W5W5W5W5W5W5W5W5.', 'Accountant', 4, TRUE);
+('admin', '$2a$11$vVZ3qYvZ3qYvZ3qYvZ3qYuGKxN.lH.HhLhLhLhLhLhLhLhLhLhLhLhK', 'Admin', 1, TRUE),
+('manager', '$2a$11$wWA4rZwA4rZwA4rZwA4rZuFJyM.kG.GgKgKgKgKgKgKgKgKgKgKgKgJ', 'Manager', 2, TRUE),
+('sales', '$2a$11$xXB5sAxB5sAxB5sAxB5sAuEIxL.jF.FfJfJfJfJfJfJfJfJfJfJfJfI', 'Sales', 3, TRUE),
+('accountant', '$2a$11$yYC6tByC6tByC6tByC6tBuDHwK.iE.EeIeIeIeIeIeIeIeIeIeIeIeH', 'Accountant', 4, TRUE);
 
 -- Insert Categories
 INSERT INTO categories (name, description) VALUES

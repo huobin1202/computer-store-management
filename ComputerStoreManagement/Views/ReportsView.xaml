@@ -8,7 +8,7 @@
       Title="Reports">
     <Grid Background="{StaticResource BackgroundBrush}">
         <Border Style="{StaticResource CardStyle}">
-            <TextBlock Text="Báo cáo &amp; Thống kê" Style="{StaticResource TitleTextStyle}"/>
+            <TextBlock Text="Báo cáo và Thống kê" Style="{StaticResource TitleTextStyle}"/>
         </Border>
     </Grid>
 </Page>
